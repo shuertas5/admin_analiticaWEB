@@ -1,0 +1,74 @@
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="shortcut icon" href="#")
+        link(rel="stylesheet" href="./css/bootstrap.min.css")
+        link(rel="stylesheet" href="./includes/estilos.css")
+
+    body
+        article
+
+            div(class="container")
+
+                div(style="font-family: monospace;font-size: 1.0em;margin-top: 5px;")
+            
+                    div Acceso: 
+                        strong Super-Administrador Analiticas
+
+                    div(class="divider py-1 bg-secondary")
+
+                    div(style="display: block;margin-top: 7px;color: green;background-color: lightgreen;") 
+                        - if (creada=='true')
+                            label(style="") Base de Datos Creada
+
+                    div(style="display: block;margin-top: 7px;color: red;background-color: pink;") 
+                        - if (creada=='false')
+                            label(style="") No se ha creado la Base de datos
+
+                p
+                    div(style="font-family: monospace;") Crear Base de Datos de la Analitica: : 
+                        strong(style="color: red;") #{empre.nombre}
+
+                form(id="my_form" action="/crear_base_datos" method="post" name="crear")
+                
+                    div(style="font-size: 1.2em;font-family: monospace;margin-bottom: 15px;")
+                        label(style="") Situaci&oacute;n Actual:&nbsp;
+                        - if (existe_str=='true')
+                            label(style="color: red") Base de Datos ya Creada
+
+                    div(class="mb-2" style="margin-top: 10px;")
+                        div(class="col-lg-3")
+                            p(class="etiqueta") Contrase&ntilde;a Administrador
+                            treungc-texto(name="contrass" id="contrass" maxlength="25" value=empre.admin_pas)
+        
+                    input(name="posicion" type="hidden" value=num_e)
+                    
+                    button(id="submit" class="btn btn-md btn-primary" style="display: none;" onclick="ajax_submit('#my_form', 'temporal');")
+                div(class="col-xs-12 col-sm-6 col-md-6 col-lg-8" style="margin-top: 20px;")
+                    - if (existe_str=='false')
+                        button(id="submita" class="btn btn-md btn-primary" style="width: 250px;margin-right: 10px;" onclick="$('#submit').click();") Generar Base Datos
+                    - else 
+                        button(id="submita" class="btn btn-md btn-primary" style="width: 250px;margin-right: 10px;" onclick="$('#submit').click();" disabled) Generar Base Datos
+                    button(id="cerrar" type="button" class="btn btn-md btn-secondary" style="width: 250px;" onclick="cancelar();") Cerrar Pantalla
+
+            div(style="margin-top: 15px;" class="container")
+                footer(class="row")
+                    div(class="col-md-12")
+                        h6(style="font-size: 1.0em") !{copyrigth}
+                        
+    div(id="errores_visua")
+    a(style="display: none" href="/crear_base_datos?creada=true&empre="+num_e id="accion_cancelar")
+
+script(src="./js/jquery.min.js")
+script(src="./js/bootstrap.min.js")
+script(src="./treu/formato.js")
+script(src="./treu/rutinas_cliente.js")
+script(src="./treu/treu-widgets.js")
+script.
+
+    $('#errores_visua').load("../html/mensajes_error.html");
+
+    function cancelar() {
+        document.location = "/contabilidades";
+    }

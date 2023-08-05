@@ -1,0 +1,270 @@
+html(lang="es")
+
+    head
+
+        meta(http-equiv="cache-control" content="max-age=0")
+        meta(http-equiv="cache-control" content="no-cache")
+        meta(http-equiv="expires" content="0")
+        meta(http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT")
+        meta(http-equiv="pragma" content="no-cache")
+
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="shortcut icon" href="#")
+        link(rel="stylesheet" href="./css/bootstrap.min.css")
+        link(rel="stylesheet" href="./includes/estilos.css")
+
+    body
+
+        article
+
+            div(class="container")
+
+                div(style="font-family: monospace;font-size: 1.0em;margin-top: 5px;")
+            
+                    div Acceso: 
+                        strong Super-Administrador Analiticas
+            
+                    div(class="divider py-1 bg-secondary")
+
+
+                div(id="contenido")
+
+                    form(id="my_form" action="analiticas_detalle?opcion="+opcion method="post")
+
+                        input(name="posicion" type="hidden" value=num_e)
+                        input(name="opcionx" type="hidden" value=opcion)
+
+                        div(id="panta_scroll" class="detalle vertical-scrollable")
+
+                            div(style="height: 15px")
+
+                            div(class="mb-2")
+
+                                div(class="col-lg-1")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "true"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Id.
+                                    treungc-numer(name="clave" id="clave" formato="#####" maxlength="15" disabled=disab value=empre.num_empre)                                                
+                                
+                            div(class="mb-2")
+
+                                div(class="col-lg-6")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Nombre Analitica
+                                    treungc-texto(name="nombre" id="nombre" maxlength="40" disabled=disab value=empre.nombre)
+
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-2")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Pin Analitica
+                                    treungc-texto(name="contrase" id="contrase" maxlength="15" disabled=disab value=empre.pin)
+
+                            div(class="mb-2")
+
+                                div(class="col-lg-4")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Imagen
+                                    treungc-texto(name="imagen" id="imagen" maxlength="25" disabled=disab value=empre.imagen)
+        
+                            div(class="mb-2")
+
+                                div(class="col-lg-6")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Correo de Usuario
+                                    treungc-texto(name="correo_user" id="correo_user" maxlength="80" disabled=disab value=empre.correo_user)
+
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-5")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Driver
+                                    treungc-texto(name="driver" id="driver" maxlength="100" disabled=disab value=empre.driver)
+        
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-9")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Cadena de Conexion
+                                    treungc-texto(name="conexion" id="conexion" maxlength="250" disabled=disab value=empre.cadena_conexion)
+        
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-3")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Usuario Base de Datos
+                                    treungc-texto(name="usuario_db" id="usuario_db" maxlength="20" disabled=disab value=empre.usuario)
+                                
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-3")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Contrase&ntilde;a Base de Datos
+                                    treungc-texto(name="contrase_db" id="contrase_db" maxlength="20" disabled=disab value=empre.password)
+                                
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-4")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Nombre Base de Datos
+                                    treungc-texto(name="nombre_db" id="nombre_db" maxlength="35" disabled=disab value=empre.base_datos)
+                                
+
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-3")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Servidor Base de Datos
+                                    treungc-texto(name="servidor_db" id="servidor_db" maxlength="35" disabled=disab value=empre.host)
+                                
+                            div(class="mb-2")
+                            
+                                div(class="col-lg-3")
+
+                                    - if (opcion == "alta") 
+                                        - disab = "false"
+                                    - if (opcion == "consu") 
+                                        - disab = "true"
+                                    - if (opcion == "modi") 
+                                        - disab = "false"
+                                    - if (opcion == "baja") 
+                                        - disab = "true"
+
+                                    p(class="etiqueta") Contrase&ntilde;a al Crear DB
+                                    treungc-texto(name="admin_pas" id="admin_pas" maxlength="35" disabled=disab value=empre.admin_pas)
+                                
+                        div(class="botonera")
+
+                            div(class="vertical-center")
+
+                                - if (opcion == "baja") 
+                                    - boton = "Dar de Baja"
+                                - else 
+                                    - boton = "Grabar Datos"
+
+                                - if (opcion == "consu") {
+                                    - botonhabil = "display: none;"
+                                    - boton = ""
+                                - } else 
+                                    - botonhabil = "width: 180px";
+
+                                button(id="submit" class="btn btn-md btn-primary btn-block" style="display: none;" onclick="ajax_submit('#my_form', 'temporal');")  
+                                button(id="submita" class="btn btn-lg btn-primary" type="button" style = botonhabil onclick="$('#submit').click();") #{boton}
+                                button(id="cerrar" type="button" class="btn btn-lg btn-secondary" style="width: 180px" onclick="cancelar();") Cerrar Pantalla
+                    a(style="display: none" href="/contabilidades" id="accion_cancelar")
+
+            div(style="margin-top: 15px;" class="container")
+                footer(class="row")
+                    div(class="col-md-12")
+                        h6(style="font-size: 1.0em") !{copyrigth}
+
+script(src="./js/jquery.min.js")
+script(src="./js/bootstrap.min.js")
+script(src="./treu/formato.js")
+script(src="./treu/rutinas_cliente.js")
+script(src="./treu/treu-widgets.js")
+
+script.
+
+    function cancelar() {
+        document.location = "/contabilidades";
+    }

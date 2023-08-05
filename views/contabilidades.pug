@@ -1,0 +1,84 @@
+html(lang="es")
+    head
+        meta(http-equiv="cache-control" content="max-age=0")
+        meta(http-equiv="cache-control" content="no-cache")
+        meta(http-equiv="expires" content="0")
+        meta(http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT")
+        meta(http-equiv="pragma" content="no-cache")
+
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="shortcut icon" href="#")
+        link(rel="stylesheet" href="./css/bootstrap.min.css")
+        link(rel="stylesheet" href="./includes/estilos.css")
+    body
+
+        article
+
+            div(class="container")
+
+                div(style="font-family: monospace;font-size: 1.0em;margin-top: 5px;")
+            
+                    div Acceso: 
+                        strong Super-Administrador Analiticas
+
+                    div(class="divider py-1 bg-secondary")
+
+                    div(style="display: block;margin-top: 7px;color: green;background-color: lightgreen;") 
+                        - if (recuperado=='true')
+                            label(style="") Correo Enviado
+
+                    div(style="display: block;margin-top: 7px;color: red;background-color: pink;") 
+                        - if (recuperado=='false')
+                            label(style="") Correo No se ha podido enviar
+
+                div(id="cabecera")
+
+                    div(id="contenido")
+
+                        p(style="margin-top: 15px;")
+                            a(href="/analiticas_detalle?opcion=alta")
+                                img(style="margin-right: 10px; margin-bottom: 0px;" src="./img/mas.svg" class="icono_app" title="Crear Analitica") 
+                                label Crear Analitica
+
+                div(class="table-responsive")
+                    table(class="table table-striped table_size_3")
+                        thead(class="thead-dark")
+                            tr
+                                th(style="width:10%") Id. Analitica
+                                th(style="width:30%") Nombre Analitica
+                                th(style="width:15%") Codigo Analitica
+                                th(style="width:20%") Base de Datos                           
+                                th(style="width:30%") Operativa
+
+                        tbody
+                        - emp = 0
+                        each empre in empresas
+                            tr 
+                                td= empre.num_empre
+                                td= empre.nombre
+                                td= empre.pin
+                                td= empre.base_datos
+                                td(align="center" class="centrar")
+                                    a(href="./envio_correo_usuario?empre="+emp)
+                                        img(src="./img/email_vacio.svg" class="icono_app" alt="Mensajes a Analiticas" title="Mensajes a Analiticas")
+                                    a(href="./analiticas_detalle?opcion=consu&empre="+emp)
+                                        img(src="./img/ver.svg" class="icono_app" alt="Ver Analitica" title="Ver Analitica")
+                                    a(href="./analiticas_detalle?opcion=modi&empre="+emp)
+                                        img(src="./img/edit.svg" class="icono_app" alt="Editar Analitica" title="Editar Analitica")
+                                    a(href="./analiticas_detalle?opcion=baja&empre="+emp)
+                                        img(src="./img/delete.svg" class="icono_app" alt="Borrar Analitica" title="Borrar Analitica")
+                                    a(href="/crear_base_datos?empre="+emp)
+                                        img(src="./img/base_datos.svg" class="icono_app" alt="Crear Base de Datos" title="Crear Base de Datos")
+                                    a(href="/ejecutar_script_sql?empre="+emp)
+                                        img(src="./img/exe.svg" class="icono_app" alt="Ejecutar Script SQL" title="Ejecutar Script SQL")
+                                    a(href="./ejecutar_funcion_correctora?empre="+emp class="disabled-link")
+                                        img(src="./img/funcion.svg" class="icono_app" alt="Ejecutar Funcion Correctora" title="Ejecutar Funcion Correctora")
+                            - emp = emp+1
+article     
+    div(style="margin-top: 15px;" class="container")
+        footer(class="row")
+            div(class="col-md-12")
+                h6(style="font-size: 1.0em") !{copyrigth}
+
+script.
